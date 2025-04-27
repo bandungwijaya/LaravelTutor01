@@ -7,6 +7,19 @@ php artisan serve
 
 
 ##################### STEP 2 #####################
+//membuat symlink atau menghubungkan folder storage/app/public ke dalam folder public
+php artisan storage:link
+
+//ubah database mysql, kemudian reload konfigurasi
+php artisan config:clear
+
+//membuat Model dengan nama Product.php,
+//flag -m agar Laravel otomatis membuat file Migration untuk Model tersebut
+php artisan make:model Product -m
+
+//membuat controller ProductController.php
+php artisan make:controller ProductController
+
 
 
 ##################### STEP 3 #####################
