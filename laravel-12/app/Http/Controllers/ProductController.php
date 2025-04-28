@@ -70,7 +70,8 @@ class ProductController extends Controller
             'title'         => $request->title,
             'description'   => $request->description,
             'price'         => $request->price,
-            'stock'         => $request->stock
+            'stock'         => $request->stock,
+            'created_at'    => date('Y-m-d H:i:s')
         ]);
 
         //redirect to index
@@ -144,7 +145,8 @@ class ProductController extends Controller
                 'title'         => $request->title,
                 'description'   => $request->description,
                 'price'         => $request->price,
-                'stock'         => $request->stock
+                'stock'         => $request->stock,
+                'updated_at'    => date('Y-m-d H:i:s')
             ]);
 
         } else {
@@ -154,7 +156,8 @@ class ProductController extends Controller
                 'title'         => $request->title,
                 'description'   => $request->description,
                 'price'         => $request->price,
-                'stock'         => $request->stock
+                'stock'         => $request->stock,
+                'updated_at'    => date('Y-m-d H:i:s')
             ]);
         }
 
