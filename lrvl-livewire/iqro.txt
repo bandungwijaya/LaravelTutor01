@@ -1,0 +1,88 @@
+
+##################### LARAVEL 12 #####################
+##################### STEP 1 #####################
+composer create-project --prefer-dist laravel/laravel:^12.0 lrvl_livewire
+cd lrvl_livewire
+php artisan serve
+
+
+##################### STEP 2 #####################
+//membuat symlink atau menghubungkan folder storage/app/public ke dalam folder public
+php artisan storage:link
+
+//ubah database mysql, kemudian reload konfigurasi
+php artisan config:clear
+
+//membuat Model dengan nama Post.php,
+//flag -m agar Laravel otomatis membuat file Migration untuk Model tersebut
+php artisan make:model Post -m
+
+
+##################### STEP 3 #####################
+//instalasi livewire terbaru
+composer require livewire/livewire
+
+//publish configurasi livewire
+php artisan livewire:publish --config
+
+//membuat layout aplikasi
+php artisan livewire:layout
+
+//membuat component post index
+php artisan make:livewire posts.index
+
+//publish UI pagination
+php artisan vendor:publish --tag=laravel-pagination
+
+
+##################### STEP 4 #####################
+//membuat component post create
+php artisan make:livewire posts.create
+
+//membuat component post edit
+php artisan make:livewire posts.edit
+
+
+
+
+//membuat controller ProductController.php
+php artisan make:controller ProductController
+
+
+
+
+
+
+
+
+
+
+========================================================================
+
+##################### STEP 1 #####################
+composer create-project --prefer-dist laravel/laravel:^12.0 laravel-12-api
+cd laravel-12-api
+php artisan serve
+
+
+##################### STEP 2 #####################
+//membuat symlink atau menghubungkan folder storage/app/public ke dalam folder public
+php artisan storage:link
+
+//API resources adalah layer yg berfungsi utk melakukan transformasi Model menjadi format JSON dengan mudah, cepat dan scalable. File yang digenerate terletak dlm folder app/Http/Resources
+php artisan make:resource PostResource
+
+//ubah database mysql, kemudian reload konfigurasi
+php artisan config:clear
+
+//membuat Model dengan nama Post.php,
+//flag -m agar Laravel otomatis membuat file Migration untuk Model tersebut
+php artisan make:model Post -m
+
+//membuat controller PostController.php
+php artisan make:controller Api/PostController
+
+//membuat routes/api.php
+php artisan install:api
+
+
