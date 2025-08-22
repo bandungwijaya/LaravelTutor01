@@ -1,0 +1,107 @@
+
+##################### LARAVEL 12 #####################
+##################### STEP 1 #####################
+composer create-project --prefer-dist laravel/laravel:^12.0 lrvl-filament
+cd lrvl-filament
+php artisan serve
+
+
+##################### STEP 2 #####################
+//membuat symlink atau menghubungkan folder storage/app/public ke dalam folder public
+php artisan storage:link
+
+//ubah database mysql, kemudian reload konfigurasi
+php artisan config:clear
+
+//membuat Model dengan nama Category.php,
+//flag -m agar Laravel otomatis membuat file Migration untuk Model tersebut
+php artisan make:model Category -m
+
+php artisan migrate
+
+
+##################### STEP 3 #####################
+//instalasi filament terbaru
+composer require filament/filament:"^3.3" -W
+
+//instalasi admin panel
+php artisan filament:install --panels
+
+//membuat user
+php artisan make:filament-user
+
+//membuat resource Category
+php artisan make:filament-resource Category
+
+//membuat Model dengan nama Post.php
+php artisan make:model Post -m
+
+php artisan migrate
+
+//membuat resource Post
+php artisan make:filament-resource Post
+
+
+
+
+//membuat layout aplikasi
+php artisan livewire:layout
+
+//membuat component post index
+php artisan make:livewire posts.index
+
+//publish UI pagination
+php artisan vendor:publish --tag=laravel-pagination
+
+
+##################### STEP 4 #####################
+//membuat component post create
+php artisan make:livewire posts.create
+
+//membuat component post edit
+php artisan make:livewire posts.edit
+
+
+
+
+//membuat controller ProductController.php
+php artisan make:controller ProductController
+
+
+
+
+
+
+
+
+
+
+========================================================================
+
+##################### STEP 1 #####################
+composer create-project --prefer-dist laravel/laravel:^12.0 laravel-12-api
+cd laravel-12-api
+php artisan serve
+
+
+##################### STEP 2 #####################
+//membuat symlink atau menghubungkan folder storage/app/public ke dalam folder public
+php artisan storage:link
+
+//API resources adalah layer yg berfungsi utk melakukan transformasi Model menjadi format JSON dengan mudah, cepat dan scalable. File yang digenerate terletak dlm folder app/Http/Resources
+php artisan make:resource PostResource
+
+//ubah database mysql, kemudian reload konfigurasi
+php artisan config:clear
+
+//membuat Model dengan nama Post.php,
+//flag -m agar Laravel otomatis membuat file Migration untuk Model tersebut
+php artisan make:model Post -m
+
+//membuat controller PostController.php
+php artisan make:controller Api/PostController
+
+//membuat routes/api.php
+php artisan install:api
+
+

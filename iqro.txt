@@ -58,3 +58,5 @@ php artisan make:controller Api/PostController
 
 //membuat routes/api.php
 php artisan install:api
+
+
